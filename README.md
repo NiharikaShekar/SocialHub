@@ -47,7 +47,8 @@ SocialHub/
 
 3. **Run Initial Data Exploration**:
    ```bash
-   jupyter notebook notebooks/01_data_exploration.ipynb
+   jupyter notebook notebooks/01_data_exploration.py
+   jupyter notebook notebooks/02_detailed_visualizations.py
    ```
 
 ## Milestones
@@ -61,7 +62,3 @@ SocialHub/
 - [ ] System Evaluation and Testing
 - [ ] Final Project Presentation
 
-## Authors
-
-- Pratyay Banerjee (pbane8@uic.edu)
-- Niharika Belavadi Shekar (nbela@uic.edu)
