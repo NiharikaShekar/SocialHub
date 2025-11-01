@@ -16,11 +16,11 @@ warnings.filterwarnings('ignore')
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 PROCESSED_DATA_DIR = PROJECT_ROOT / 'data' / 'processed'
 
-print(f"📊 CREATING DETAILED VISUALIZATIONS")
+print(f" CREATING DETAILED VISUALIZATIONS")
 print(f"Processed data directory: {PROCESSED_DATA_DIR}")
 
 # Load processed datasets
-print("\n📁 Loading processed datasets...")
+print("\n Loading processed datasets...")
 marketing_df = pd.read_csv(PROCESSED_DATA_DIR / 'marketing_processed.csv')
 profiles_df = pd.read_csv(PROCESSED_DATA_DIR / 'profiles_processed.csv')
 
@@ -33,7 +33,7 @@ sns.set_palette("husl")
 
 def create_marketing_visualizations():
     """Create detailed visualizations for marketing dataset."""
-    print("\n🎯 Creating Marketing Dataset Visualizations...")
+    print("\n Creating Marketing Dataset Visualizations...")
     
     # Create figure with subplots
     fig, axes = plt.subplots(2, 3, figsize=(18, 12))
@@ -89,7 +89,7 @@ def create_marketing_visualizations():
     plt.savefig(PROCESSED_DATA_DIR / 'marketing_detailed_analysis.png', dpi=300, bbox_inches='tight')
     plt.show()
     
-    print(f"✅ Marketing visualizations saved to: {PROCESSED_DATA_DIR / 'marketing_detailed_analysis.png'}")
+    print(f" Marketing visualizations saved to: {PROCESSED_DATA_DIR / 'marketing_detailed_analysis.png'}")
 
 def create_profiles_visualizations():
     """Create detailed visualizations for profiles dataset."""
@@ -148,7 +148,7 @@ def create_profiles_visualizations():
     plt.savefig(PROCESSED_DATA_DIR / 'profiles_detailed_analysis.png', dpi=300, bbox_inches='tight')
     plt.show()
     
-    print(f"✅ Profiles visualizations saved to: {PROCESSED_DATA_DIR / 'profiles_detailed_analysis.png'}")
+    print(f" Profiles visualizations saved to: {PROCESSED_DATA_DIR / 'profiles_detailed_analysis.png'}")
 
 def create_combined_analysis():
     """Create combined analysis of both datasets."""
@@ -199,15 +199,15 @@ def create_combined_analysis():
     plt.savefig(PROCESSED_DATA_DIR / 'combined_analysis.png', dpi=300, bbox_inches='tight')
     plt.show()
     
-    print(f"✅ Combined analysis saved to: {PROCESSED_DATA_DIR / 'combined_analysis.png'}")
+    print(f" Combined analysis saved to: {PROCESSED_DATA_DIR / 'combined_analysis.png'}")
 
 def print_data_summary():
     """Print comprehensive data summary."""
     print("\n" + "="*60)
-    print("📊 COMPREHENSIVE DATA SUMMARY")
+    print(" COMPREHENSIVE DATA SUMMARY")
     print("="*60)
     
-    print(f"\n🎯 MARKETING DATASET:")
+    print(f"\n MARKETING DATASET:")
     print(f"   • Students: {len(marketing_df):,}")
     print(f"   • Features: {len(marketing_df.columns)}")
     print(f"   • Age range: {marketing_df['age'].min():.1f} - {marketing_df['age'].max():.1f}")
@@ -229,7 +229,7 @@ def print_data_summary():
 
 def main():
     """Main function to create all visualizations."""
-    print("🚀 STARTING DETAILED VISUALIZATION ANALYSIS")
+    print(" STARTING DETAILED VISUALIZATION ANALYSIS")
     print("="*60)
     
     # Create visualizations
@@ -241,10 +241,10 @@ def main():
     print_data_summary()
     
     print("\n" + "="*60)
-    print("✅ DETAILED VISUALIZATION ANALYSIS COMPLETED!")
+    print(" DETAILED VISUALIZATION ANALYSIS COMPLETED!")
     print("="*60)
-    print(f"📁 All charts saved to: {PROCESSED_DATA_DIR}")
-    print("🎯 Ready for baseline model testing!")
+    print(f" All charts saved to: {PROCESSED_DATA_DIR}")
+    print(" Ready for baseline model testing!")
 
 if __name__ == "__main__":
     main()

@@ -38,4 +38,21 @@ ENV/
 # OS
 .DS_Store
 Thumbs.db
-EOF
+
+# Model files (too large for GitHub)
+*.pkl
+results/baseline/*/model*.pkl
+results/baseline/*/*.pkl
+
+# Embedding files (too large for GitHub)
+*.npy
+results/baseline/embeddings/*.npy
+
+# Large data files
+data/raw/*
+data/processed/*.csv
+data/processed/*.json
+data/processed/*.jsonl
+
+# Results folder (optional - uncomment if you want to exclude all results)
+# results/

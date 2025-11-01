@@ -18,14 +18,14 @@ print(f"🧹 CLEANING MARKETING DATASET AGES")
 print(f"Processed data directory: {PROCESSED_DATA_DIR}")
 
 # Load the marketing dataset
-print("\n📁 Loading marketing dataset...")
+print("\n Loading marketing dataset...")
 marketing_df = pd.read_csv(PROCESSED_DATA_DIR / 'marketing_processed.csv')
 
 print(f"Original dataset shape: {marketing_df.shape}")
 print(f"Age range before cleaning: {marketing_df['age'].min():.1f} - {marketing_df['age'].max():.1f}")
 
 # Check for unrealistic ages
-print(f"\n🔍 Analyzing age distribution...")
+print(f"\n Analyzing age distribution...")
 print(f"Students with age > 60: {(marketing_df['age'] > 60).sum()}")
 print(f"Students with age < 15: {(marketing_df['age'] < 15).sum()}")
 print(f"Students with age between 15-60: {((marketing_df['age'] >= 15) & (marketing_df['age'] <= 60)).sum()}")
@@ -33,7 +33,7 @@ print(f"Students with age between 15-60: {((marketing_df['age'] >= 15) & (market
 # Show some examples of unrealistic ages
 unrealistic_ages = marketing_df[marketing_df['age'] > 60]
 if len(unrealistic_ages) > 0:
-    print(f"\n📊 Examples of unrealistic ages:")
+    print(f"\n Examples of unrealistic ages:")
     print(unrealistic_ages[['student_id', 'age', 'gender', 'NumberOffriends']].head(10))
 
 # Clean the data
@@ -62,7 +62,7 @@ print(f"Students with age between 15-60: {((marketing_cleaned['age'] >= 15) & (m
 output_file = PROCESSED_DATA_DIR / 'marketing_cleaned.csv'
 marketing_cleaned.to_csv(output_file, index=False)
 
-print(f"\n✅ Cleaned dataset saved to: {output_file}")
+print(f"\n Cleaned dataset saved to: {output_file}")
 print(f"Final dataset shape: {marketing_cleaned.shape}")
 
 # Create a quick visualization of the cleaning
@@ -94,11 +94,11 @@ plt.tight_layout()
 plt.savefig(PROCESSED_DATA_DIR / 'age_cleaning_impact.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-print(f"📊 Visualization saved to: {PROCESSED_DATA_DIR / 'age_cleaning_impact.png'}")
+print(f" Visualization saved to: {PROCESSED_DATA_DIR / 'age_cleaning_impact.png'}")
 
 print("\n" + "="*60)
-print("✅ AGE CLEANING COMPLETED!")
+print(" AGE CLEANING COMPLETED!")
 print("="*60)
-print(f"📁 Cleaned dataset: {output_file}")
-print(f"📊 Visualization: {PROCESSED_DATA_DIR / 'age_cleaning_impact.png'}")
-print("🎯 Ready for baseline model testing!")
+print(f" Cleaned dataset: {output_file}")
+print(f" Visualization: {PROCESSED_DATA_DIR / 'age_cleaning_impact.png'}")
+print(" Ready for baseline model testing!")

@@ -29,7 +29,7 @@ PROCESSED_DATA_DIR.mkdir(parents=True, exist_ok=True)
 def load_marketing_dataset():
     """Load and explore the marketing/clustering dataset."""
     print("\n" + "="*50)
-    print("📊 LOADING MARKETING/CLUSTERING DATASET")
+    print(" LOADING MARKETING/CLUSTERING DATASET")
     print("="*50)
     
     file_path = RAW_DATA_DIR / '03_Clustering_Marketing.csv'
@@ -54,7 +54,7 @@ def load_marketing_dataset():
 def load_student_profiles():
     """Load and explore the student profiles dataset."""
     print("\n" + "="*50)
-    print("📊 LOADING STUDENT PROFILES DATASET")
+    print(" LOADING STUDENT PROFILES DATASET")
     print("="*50)
     
     file_path = RAW_DATA_DIR / 'student_profiles.jsonl'
@@ -86,7 +86,7 @@ def load_student_profiles():
 def analyze_interest_features(marketing_df):
     """Analyze the interest features in the marketing dataset."""
     print("\n" + "="*50)
-    print("🎯 ANALYZING INTEREST FEATURES")
+    print(" ANALYZING INTEREST FEATURES")
     print("="*50)
     
     # Get interest columns (exclude demographic columns)
@@ -144,7 +144,7 @@ def analyze_student_profiles(profiles_df):
 def create_processed_datasets(marketing_df, profiles_df, interest_cols):
     """Create processed datasets for our models."""
     print("\n" + "="*50)
-    print("🔧 CREATING PROCESSED DATASETS")
+    print(" CREATING PROCESSED DATASETS")
     print("="*50)
     
     # Process marketing dataset
@@ -224,7 +224,7 @@ def create_visualizations(marketing_df, profiles_df):
 
 def main():
     """Main function to run the data exploration."""
-    print("🚀 STARTING DATA EXPLORATION AND PREPROCESSING")
+    print(" STARTING DATA EXPLORATION AND PREPROCESSING")
     print("="*60)
     
     # Load datasets
@@ -244,7 +244,7 @@ def main():
     create_visualizations(marketing_df, profiles_df)
     
     print("\n" + "="*60)
-    print("✅ DATA EXPLORATION COMPLETED!")
+    print(" DATA EXPLORATION COMPLETED!")
     print("="*60)
     print(f"Processed datasets saved to: {PROCESSED_DATA_DIR}")
     print(f"Ready for next step: Model development!")
