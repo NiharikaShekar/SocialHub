@@ -50,7 +50,6 @@ results/baseline/embeddings/*.npy
 
 # Large data files
 data/raw/*
-data/processed/*.csv
 data/processed/*.json
 data/processed/*.jsonl
 
