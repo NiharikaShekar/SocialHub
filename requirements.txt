@@ -37,3 +37,4 @@ fastapi
 uvicorn
 torch
 torch-geometric
+google-adk
