@@ -39,6 +39,11 @@ ENV/
 .DS_Store
 Thumbs.db
 
+# Environment variables (API keys, secrets)
+.env
+*.env
+.env.local
+
 # Model files (too large for GitHub)
 *.pkl
 results/baseline/*/model*.pkl
