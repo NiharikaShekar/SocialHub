@@ -1,0 +1,15 @@
+Metric,Baseline,GNN,Note
+Precision@5,0.7884000000000001,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+Precision@10,0.6708,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+Recall@5,0.1971,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+Recall@10,0.3354,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+F1@5,0.3153600000000001,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+F1@10,0.4472,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+MRR,0.9396190476190476,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+Coverage,0.1613875021518333,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+Diversity,0.3164236183667593,N/A (Different Task),Baseline: Recommendation | GNN: Link Prediction
+ROC_AUC,N/A (Different Task),0.986,GNN: Link Prediction | Baseline: Recommendation
+Validation_AUC,N/A (Different Task),0.745,GNN: Link Prediction | Baseline: Recommendation
+Average_Precision,N/A (Different Task),0.973,GNN: Link Prediction | Baseline: Recommendation
+Train_AUC,N/A (Different Task),0.979,GNN: Link Prediction | Baseline: Recommendation
+Train_AP,N/A (Different Task),0.981,GNN: Link Prediction | Baseline: Recommendation

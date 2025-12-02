@@ -64,12 +64,21 @@ class FriendFinderBaseline:
         """
         print(f"\n Training Friend Finder model (Embedding-Based)...")
         
-        self.df_students = df_students.copy()
-        self.student_ids = df_students['student_id']
+        self.df_students = df_students.copy().reset_index(drop=True)
+        self.student_ids = self.df_students['student_id'].reset_index(drop=True)
         
         # Load or create embeddings
         print(" Loading or creating embeddings...")
-        self.embeddings = self.load_or_create_embeddings(df_students, force_recreate_embeddings)
+        cached_embeddings = self.load_or_create_embeddings(df_students, force_recreate_embeddings)
+        
+        # If cached embeddings exist but don't match training data size, recreate for this fold
+        if len(cached_embeddings) != len(self.df_students):
+            print(f"   • Cached embeddings size ({len(cached_embeddings)}) doesn't match training data ({len(self.df_students)})")
+            print(f"   • Creating embeddings for this training fold...")
+            from notebooks.utils.create_embeddings import create_marketing_embeddings
+            self.embeddings = create_marketing_embeddings(self.df_students, save=False)
+        else:
+            self.embeddings = cached_embeddings
         
         print(f"   • Embedding shape: {self.embeddings.shape}")
         print(f"   • Each student represented by {self.embeddings.shape[1]}-dimensional embedding")
@@ -132,8 +141,12 @@ class FriendFinderBaseline:
             print(f" Student ID {student_id} not found.")
             return []
         
-        # Find student's cluster
-        student_idx = self.student_ids[self.student_ids == student_id].index[0]
+        # Find student's cluster (use positional index from numpy array)
+        student_positions = np.where(self.student_ids.values == student_id)[0]
+        if len(student_positions) == 0:
+            print(f" Student ID {student_id} not found.")
+            return []
+        student_idx = student_positions[0]  # Use first match (positional index 0-based)
         student_cluster = self.labels[student_idx]
         student_embedding = self.embeddings[student_idx].reshape(1, -1)
         
@@ -212,7 +225,9 @@ class FriendFinderBaseline:
         # Get student info
         student_info = self.df_students[self.df_students['student_id'] == student_id].iloc[0]
         student_cluster = student_info['cluster']
-        student_idx = self.student_ids[self.student_ids == student_id].index[0]
+        # Use positional index (0-based)
+        student_positions = np.where(self.student_ids.values == student_id)[0]
+        student_idx = student_positions[0] if len(student_positions) > 0 else 0
         student_embedding = self.embeddings[student_idx]
         
         print(f"\n Student {student_id} (Cluster {student_cluster}):")

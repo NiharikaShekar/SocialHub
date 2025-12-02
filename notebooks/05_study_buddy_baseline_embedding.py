@@ -59,8 +59,9 @@ class StudyBuddyBaseline:
         """
         print(f"\n Training Study Buddy model (Embedding-Based)...")
         
-        self.df_students = df_students.copy()
-        self.student_ids = df_students['student_id']
+        # Reset index to ensure positional alignment with arrays
+        self.df_students = df_students.copy().reset_index(drop=True)
+        self.student_ids = self.df_students['student_id'].reset_index(drop=True)
         
         # Load or create embeddings
         print(" Loading or creating embeddings...")
@@ -87,8 +88,12 @@ class StudyBuddyBaseline:
             print(f" Student ID {student_id} not found.")
             return []
         
-        # Find student's embedding and GPA
-        student_idx = self.student_ids[self.student_ids == student_id].index[0]
+        # Find student's embedding and GPA (use positional index)
+        student_positions = np.where(self.student_ids.values == student_id)[0]
+        if len(student_positions) == 0:
+            print(f" Student ID {student_id} not found.")
+            return []
+        student_idx = student_positions[0]  # Use first match (positional index 0-based)
         student_embedding = self.embeddings[student_idx].reshape(1, -1)
         student_gpa = self.df_students.iloc[student_idx]['GPA']
         
@@ -180,7 +185,9 @@ class StudyBuddyBaseline:
         
         # Get student info
         student_info = self.df_students[self.df_students['student_id'] == student_id].iloc[0]
-        student_idx = self.student_ids[self.student_ids == student_id].index[0]
+        # Use positional index (0-based)
+        student_positions = np.where(self.student_ids.values == student_id)[0]
+        student_idx = student_positions[0] if len(student_positions) > 0 else 0
         student_embedding = self.embeddings[student_idx]
         
         print(f"\n Student {student_id}:")
@@ -208,7 +215,9 @@ class StudyBuddyBaseline:
         # Get recommendation details
         for i, rec_id in enumerate(recommendations, 1):
             rec_info = self.df_students[self.df_students['student_id'] == rec_id].iloc[0]
-            rec_idx = self.student_ids[self.student_ids == rec_id].index[0]
+            # Use positional index (0-based)
+            rec_positions = np.where(self.student_ids.values == rec_id)[0]
+            rec_idx = rec_positions[0] if len(rec_positions) > 0 else 0
             similarity = similarities[rec_idx]
             rec_gpa = rec_info['GPA']
             gpa_diff = abs(student_gpa - rec_gpa)
