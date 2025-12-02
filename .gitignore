@@ -47,7 +47,7 @@ results/baseline/*/*.pkl
 # Embedding files (too large for GitHub)
 *.npy
 results/baseline/embeddings/*.npy
-
+*.pth
 # Large data files
 data/raw/*
 data/processed/*.json
