@@ -42,3 +42,5 @@ networkx>=3.0
 pyvis>=0.3.2
 scikit-learn>=1.3.0
 google-adk
+beautifulsoup4>=4.12.0
+lxml>=4.9.0
